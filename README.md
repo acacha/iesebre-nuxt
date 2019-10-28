@@ -1,6 +1,41 @@
 # iesebre-nuxt
 
-> My stylish Nuxt.js project
+https://github.com/pktharindu/nuxt-laravel-passport-example
+
+# Proves Auth-module amb laravel Passport amb Proxy (Janitor package)
+
+- Instal·lar mòdul auth segons: https://auth.nuxtjs.org/guide/setup.html
+
+# DOTENV
+
+TODO: copait del projecte: 
+
+- https://github.com/pktharindu/nuxt-laravel-passport-example
+
+# NOW
+
+S'ha instal·lat cli de now:   
+
+```
+npm i -g now
+now login
+```  
+
+Observeu el fitxer now.json del projecte. Per evitar un error també cal posar a package.json:
+
+```
+  ...
+  ,
+  "engines": {
+    "node": "10.x"
+  }
+``` 
+
+Pujar a explotació:
+
+``` 
+now --prod
+```
 
 ## Build Setup
 
