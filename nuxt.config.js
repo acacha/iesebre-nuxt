@@ -89,6 +89,22 @@ export default {
     }
   },
   auth: {
-    // Options
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/login', method: 'post', propertyName: 'access_token' },
+          logout: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/logout', method: 'post' },
+          user: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/user', method: 'get' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    }
   }
 }

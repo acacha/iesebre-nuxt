@@ -80,23 +80,6 @@
       </v-btn>
       <v-spacer />
     </v-card-actions>
-    <v-divider class="mt-3" />
-    <v-container grid-list-md text-xs-center class="pt-2">
-      <v-layout>
-        <v-flex xs12>
-          Login amb xarxes socials:
-        </v-flex>
-      </v-layout>
-    </v-container>
-    <v-container grid-list-md text-xs-center class="pt-0">
-      <v-layout>
-        <v-flex xs12>
-          <v-btn href="/auth/facebook" style="background-color: #3b5998;" class="white--text">
-            <span class="ml-1">Login amb Facebook</span>
-          </v-btn>
-        </v-flex>
-      </v-layout>
-    </v-container>
   </v-card>
 </template>
 
@@ -122,7 +105,15 @@ export default {
     }
   },
   methods: {
-    remember () {}
+    remember () {},
+    login () {
+      this.$auth.loginWith('local', {
+        data: {
+          email: this.email,
+          password: this.password
+        }
+      })
+    }
   }
 }
 </script>
