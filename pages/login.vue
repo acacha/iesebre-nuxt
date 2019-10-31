@@ -29,12 +29,19 @@
           required
         />
         <v-tooltip bottom class="pb-0">
-          <v-checkbox
-            slot="activator"
-            v-model="remember"
-            name="remember"
-            label="Recordeu el meu usuari"
-          />
+          <!--          https://vuejs.org/v2/guide/components-slots.html#Named-Slots-Shorthand -->
+          <!--          També es possible utilitza #activator en comptes v-slot:activator-->
+          <!--          https://vuejs.org/v2/guide/syntax.html#v-on-Shorthand-->
+          <template v-slot:activator="{ on }">
+            <v-checkbox
+              slot="activator"
+              v-model="remember"
+              name="remember"
+              label="Recordeu el meu usuari"
+              v-on="on"
+            />
+          </template>
+
           <span>Es recordara el vostre usuari en aquesta màquina</span>
         </v-tooltip>
       </v-form>
