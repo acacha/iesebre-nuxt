@@ -86,6 +86,15 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
     }
   },
   auth: {
@@ -94,8 +103,8 @@ export default {
         endpoints: {
           login: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/login', method: 'post', propertyName: 'access_token' },
           logout: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/logout', method: 'post' },
-          user: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/user', method: 'get' }
-        },
+          user: { url: process.env.LARAVEL_PASSPORT_ENDPOINT + '/api/user', method: 'get', propertyName: '' }
+        }
         // tokenRequired: true,
         // tokenType: 'bearer'
       }

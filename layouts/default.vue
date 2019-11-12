@@ -50,18 +50,26 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <!--      user-avatar -->
+      <div>
+        Pepe Pardo Jeans
+        <v-avatar
+          size="36px"
+          @click.stop="rightDrawer = !rightDrawer"
+        >
+          <img
+            alt="Avatar"
+            src="https://i.pravatar.cc/300"
+          >
+        </v-avatar>
+      </div>
     </v-app-bar>
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
+    <!--    <user-navigation-drawer></user-navigation-drawer>-->
     <v-navigation-drawer
       v-model="rightDrawer"
       :right="right"
@@ -76,6 +84,14 @@
             </v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+        </v-list-item>
+        <v-list-item @click.native="logout">
+          <v-list-item-action>
+            <v-icon light>
+              mdi-exit-to-app
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-title>Sortir</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -111,6 +127,12 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  methods: {
+    logout () {
+      // https://auth.nuxtjs.org/api/auth.html#logout-args
+      this.$auth.logout()
     }
   }
 }
