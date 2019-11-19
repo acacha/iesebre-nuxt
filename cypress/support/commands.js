@@ -6,9 +6,38 @@ Cypress.Commands.add('login', (email = 'sergiturbadenas@gmail.com', password = '
     name: 'Login as: ',
     message: `${email} | ${password}`
   })
+  cy.visit('/login')
 
   // getStore().its('state').should('have.keys', ['loading', 'newTodo', 'todos'])
-  cy.window().its('app.$store').commit('auth/SET', { key: 'loggedIn', value: true })
+  // console.log(cy.window().its('$nuxt.$store'))
+  // cy.window().its('$nuxt.$store').commit('auth/SET', { key: 'loggedIn', value: true })
+
+  // cy.window().then( window => {
+  //   Cypress.log({
+  //     name: 'Window: ',
+  //     message: window.nuxtApp
+  //   })
+  //   window.nuxtApp.loginWith('local', {
+  //     data: {
+  //       user: {
+  //         email: 'sergiturbadenas@gmail.com',
+  //         password: '123456'
+  //       }
+  //     }
+  //   })
+  // })
+
+  cy.window()
+    .then(window => {
+      window.nuxtApp.$auth.loginWith('local', {
+        data: {
+          user: {
+            email: 'sergiturbadenas@gmail.com',
+            password: '123456'
+          }
+        }
+      })
+    })
 
   // https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-data-store-and-rest-backend/
   // window.$nuxt.$store.commit('auth/SET',{ key: 'loggedIn', value: true})

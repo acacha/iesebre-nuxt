@@ -31,20 +31,20 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn
-        icon
         @click.stop="miniVariant = !miniVariant"
+        icon
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-btn
-        icon
         @click.stop="clipped = !clipped"
+        icon
       >
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-btn
-        icon
         @click.stop="fixed = !fixed"
+        icon
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
@@ -54,8 +54,8 @@
       <div>
         Pepe Pardo Jeans
         <v-avatar
-          size="36px"
           @click.stop="rightDrawer = !rightDrawer"
+          size="36px"
         >
           <img
             alt="Avatar"

@@ -8,20 +8,20 @@
         <v-text-field
           id="login_email"
           v-model="email"
-          name="email"
-          label="Correu electrònic"
           :rules="emailRules"
           :error="errors['email'] && true"
           :error-messages="errors['email']"
+          label="Correu electrònic"
+          name="email"
           data-test="auth_login_input_email"
           required
         />
         <v-text-field
           id="login_password"
           v-model="password"
+          :rules="passwordRules"
           name="password"
           label="Password"
-          :rules="passwordRules"
           hint="At least 6 characters"
           min="6"
           type="password"
@@ -36,9 +36,9 @@
             <v-checkbox
               slot="activator"
               v-model="remember"
+              v-on="on"
               name="remember"
               label="Recordeu el meu usuari"
-              v-on="on"
             />
           </template>
 
@@ -61,20 +61,20 @@
     <v-card-actions class="pt-0">
       <v-spacer />
       <v-btn
+        @click.native="showLogin = false"
         color="blue darken-2"
         text
         data-test="auth_login_button_close"
-        @click.native="showLogin = false"
       >
         Tancar
       </v-btn>
       <v-btn
         id="login_button"
+        :loading="loginLoading"
+        @click.native="login"
         color="blue darken-2"
         class="white--text"
         data-test="auth_login_button_login"
-        :loading="loginLoading"
-        @click.native="login"
       >
         Login
       </v-btn>
